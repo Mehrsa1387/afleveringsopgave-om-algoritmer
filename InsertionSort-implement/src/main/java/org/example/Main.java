@@ -5,12 +5,10 @@ public class Main {
 
         //array givet af opgaven (det er ikke noget brugeren skriver)
         int array[] = {4, 8, 6, 2, 3, 9, 7, 5};
-
+        System.out.println("Original Array: 4, 8, 6, 2, 3, 9, 7, 5");
+        System.out.println("not to cbr: You can see the sorting steps here:");
 
         reverseInsertionSort(array);
-        for (int i : array) {
-            System.out.print(i+" ");
-        }
 
     }
 
@@ -29,6 +27,11 @@ public class Main {
                 j--;
             }
             array[j+1] = current;
+
+            for (int num : array) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
         }
     }
 }
