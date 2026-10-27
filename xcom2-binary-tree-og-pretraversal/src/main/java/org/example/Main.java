@@ -17,7 +17,8 @@ public class Main {
         // Gives the user the option to insert numbers into the tree, that will sort these numbers based on the structure of the tree.
         while (!isUserDoneInsertingNodes)
         {
-            System.out.println("Enter a number value to insert into a new node in the binary search tree: ");
+            System.out.println("(HINT: If you don't want to enter more values, type anything other than a number!)");
+            System.out.println("using the table of possible actions in XCOM2, enter a score(number) to insert into a new node in the binary search tree.");
             String userInput = reader.next();
 
             int numInput = 0;
@@ -27,8 +28,9 @@ public class Main {
                 // for each acceptable input, we add a new node to the tree
                 numInput = Integer.parseInt(userInput);
                 nodeValues.add(numInput);
-                System.out.println("Enter an action to help with this: ");
-                String action = reader.next();
+                System.out.println("What action does this score belong to? (write text): ");
+                reader.nextLine();
+                String action = reader.nextLine();
                 actions.add(action);
             }
             catch (NumberFormatException e)
@@ -42,12 +44,19 @@ public class Main {
         {
             tree.AddValue(nodeValues.get(i), actions.get(i));
         }
-        System.out.println("Tree populated successfully, will now search for element 85..");
+        System.out.println("Tree populated successfully, will now search for element 85 which was the highest possible score!");
 
         // search through tree to find the highest score (som er 85 her) using pre-order traversal
         final int SEARCHNUM = 85;
-        preOrderSearch(tree.Root, SEARCHNUM);
+        if (!preOrderSearch(tree.Root, SEARCHNUM))
+        {
+            System.out.println("Cannot find number: " + SEARCHNUM);
+        }
     }
+
+
+
+
 
     private static boolean preOrderSearch(Node node, int number)
     {
